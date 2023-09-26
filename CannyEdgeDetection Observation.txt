@@ -1,0 +1,35 @@
+When sigma=1.0, low_threshold=0.1, high_threshold=0.1
+
+Sigma (sigma=1.0):
+
+The sigma parameter controls the amount of smoothing (blurring) applied to the image before edge detection. A larger sigma value results in stronger smoothing, which can reduce noise but may also blur out fine details.
+A smaller sigma value preserves more fine details but may be sensitive to noise.
+If you're observing extra noise in the results, you can try adjusting the sigma value. Increasing it (e.g., sigma=2.0 or higher) will apply stronger smoothing and help reduce noise at the cost of potentially losing some fine details.
+Low Threshold (low_threshold=0.1):
+
+The low threshold is used in the hysteresis step to identify weak edges that may or may not be part of actual edges.
+A low threshold value means that more weak edges will be retained, potentially including some noise as edges.
+If you want to reduce noise, consider increasing the low threshold value (e.g., low_threshold=0.2 or higher). This will make it less likely for weak, noisy edges to be included in the final result.
+High Threshold (high_threshold=0.1):
+
+The high threshold is used in the hysteresis step to identify strong edges.
+A low high threshold value means that even relatively weak edges will be considered strong edges, which can result in more edges being detected, including noisy ones.
+To reduce noise and capture only stronger edges, you can increase the high threshold value (e.g., high_threshold=0.3 or higher). This will require edges to have a higher gradient magnitude to be considered strong edges.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+When increasing the value of sigma = 2.0 & high_thrshold value to 1.0 then it show black image ??
+
+Sigma (σ) Value:
+
+The sigma parameter in Canny edge detection controls the degree of Gaussian smoothing applied to the image before edge detection. A higher sigma value results in a stronger smoothing effect. When sigma is increased to 2.0, the Gaussian filter significantly blurs the image. This blurring process reduces high-frequency noise but can also lead to the loss of fine edge details in the image. Edges become less pronounced, and subtle features may be smoothed out entirely.
+
+High Threshold (high_threshold):
+
+The high_threshold parameter determines the threshold above which an edge pixel is considered a strong edge. In the context of grayscale images where pixel intensities typically range from 0 to 1, setting high_threshold to 1.0 imposes a very stringent criterion. It implies that only pixel intensities significantly higher than 1.0 would be considered strong edges. Since intensities exceeding 1.0 are uncommon in standard grayscale images, very few, if any, strong edges will be detected with such a high threshold.
+
+The combined effect of a strong Gaussian smoothing (high sigma) and a high threshold (high_threshold) results in a heavily smoothed image where most of the subtle edge features are suppressed. Furthermore, the strict thresholding criteria make it unlikely for any pixel to exceed the threshold for strong edges, leading to either a black image or very few visible edges in the output.
+
+
+ 
